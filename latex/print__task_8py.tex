@@ -1,0 +1,143 @@
+\hypertarget{print__task_8py}{}\section{print\+\_\+task.\+py File Reference}
+\label{print__task_8py}\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+
+
+This file contains code for a task which prints things from a queue.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{print__task_8py_a2986427f884f4edfc5d212b2f99f1f23}{print\+\_\+task.\+put} (a\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Put a string into the print queue so it can be printed by the printing task whenever that task gets a chance. \end{DoxyCompactList}\item 
+def \hyperlink{print__task_8py_a6172f74f0655d6d9288284aab62dd7fe}{print\+\_\+task.\+put\+\_\+bytes} (b\+\_\+arr)
+\begin{DoxyCompactList}\small\item\em Put bytes from a {\ttfamily bytearray} or {\ttfamily bytes} into the print queue. \end{DoxyCompactList}\item 
+def \hyperlink{print__task_8py_abe2a60b9d48d38a4c9ec85bd891aafca}{print\+\_\+task.\+run} ()
+\begin{DoxyCompactList}\small\item\em Run function for the task which prints stuff. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{print__task_8py_a88f04f8dbccfe4f94fc04afbc194a7b0}{print\+\_\+task.\+B\+U\+F\+\_\+\+S\+I\+ZE} = const(100)
+\begin{DoxyCompactList}\small\item\em The size of the buffer which will hold characters to be printed when the print task has time to print them. \end{DoxyCompactList}\item 
+bool \hyperlink{print__task_8py_a11e4727a312bb3d5da524affe5fc462f}{print\+\_\+task.\+T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT} = True
+\begin{DoxyCompactList}\small\item\em A flag which is passed to the queue constructor to control whether the queue will protect puts and gets from being corrupted by interrupts. \end{DoxyCompactList}\item 
+bool \hyperlink{print__task_8py_a959384ca303efcf0bcfd7f12469d1f09}{print\+\_\+task.\+P\+R\+O\+F\+I\+LE} = True\hypertarget{print__task_8py_a959384ca303efcf0bcfd7f12469d1f09}{}\label{print__task_8py_a959384ca303efcf0bcfd7f12469d1f09}
+
+\begin{DoxyCompactList}\small\item\em A flag which controls if the printing task is to be profiled. \end{DoxyCompactList}\item 
+\hyperlink{print__task_8py_a81414bedb3face3c011fdde4579a04f7}{print\+\_\+task.\+print\+\_\+queue}
+\begin{DoxyCompactList}\small\item\em This queue holds characters to be printed when the print task gets around to it. \end{DoxyCompactList}\item 
+\hyperlink{print__task_8py_aeb44d382e1d09e84db0909b53b9b1d13}{print\+\_\+task.\+print\+\_\+task}
+\begin{DoxyCompactList}\small\item\em This is the task which schedules printing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains code for a task which prints things from a queue. 
+
+It helps to reduce latency in a system having tasks which print because it sends things to be printed out the serial port one character at a time, even when other tasks put whole strings into the queue at once. When run as a low-\/priority task, this allows higher priority tasks to interrupt the printing between characters, even when all the tasks are being cooperatively scheduled with a priority-\/based scheduler.
+
+Example code\+: 
+\begin{DoxyCode}
+1 \textcolor{comment}{# In each module which needs to print something:}
+2 \textcolor{keyword}{import} print\_task
+3 
+4 \textcolor{comment}{# In the main module or wherever tasks are created:}
+5 shares.print\_task = print\_task.PrintTask (name = \textcolor{stringliteral}{'Printing'}, 
+6     buf\_size = 100, thread\_protect = \textcolor{keyword}{True}, priority = 0)
+7 cotask.task\_list.append (shares.print\_task)
+8 
+9 \textcolor{comment}{# In a task which needs to print something:}
+10 shares.print\_task.put (\textcolor{stringliteral}{'This is a string'})
+11 shares.print\_task.put\_bytes (bytearray (\textcolor{stringliteral}{'A bytearray'}))
+\end{DoxyCode}
+
+
+\begin{DoxyCopyright}{Copyright}
+This program is copyrighted by JR Ridgely and released under the G\+NU Public License, version 3.\+0. 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!put@{put}}
+\index{put@{put}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{put(a\+\_\+string)}{put(a_string)}}]{\setlength{\rightskip}{0pt plus 5cm}def print\+\_\+task.\+put (
+\begin{DoxyParamCaption}
+\item[{}]{a\+\_\+string}
+\end{DoxyParamCaption}
+)}\hypertarget{print__task_8py_file_a2986427f884f4edfc5d212b2f99f1f23}{}\label{print__task_8py_file_a2986427f884f4edfc5d212b2f99f1f23}
+
+
+Put a string into the print queue so it can be printed by the printing task whenever that task gets a chance. 
+
+If the print queue is full, characters are lost; this is better than blocking to wait for space in the queue, as we\textquotesingle{}d block the printing task and space would never open up. When a character has been put into the queue, the {\ttfamily go()} method of the print task is called so that the run method will be called as soon as the print task is run by the task scheduler. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+string} & A string to be put into the queue \\
+\hline
+\end{DoxyParams}
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!put\+\_\+bytes@{put\+\_\+bytes}}
+\index{put\+\_\+bytes@{put\+\_\+bytes}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{put\+\_\+bytes(b\+\_\+arr)}{put_bytes(b_arr)}}]{\setlength{\rightskip}{0pt plus 5cm}def print\+\_\+task.\+put\+\_\+bytes (
+\begin{DoxyParamCaption}
+\item[{}]{b\+\_\+arr}
+\end{DoxyParamCaption}
+)}\hypertarget{print__task_8py_file_a6172f74f0655d6d9288284aab62dd7fe}{}\label{print__task_8py_file_a6172f74f0655d6d9288284aab62dd7fe}
+
+
+Put bytes from a {\ttfamily bytearray} or {\ttfamily bytes} into the print queue. 
+
+When characters have been put into the queue, the {\ttfamily go()} method of the print task is called so that the run method will be called as soon as the print task is run by the task scheduler. 
+\begin{DoxyParams}{Parameters}
+{\em b\+\_\+arr} & The bytearray whose contents go into the queue \\
+\hline
+\end{DoxyParams}
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!run@{run}}
+\index{run@{run}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{run()}{run()}}]{\setlength{\rightskip}{0pt plus 5cm}def print\+\_\+task.\+run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{print__task_8py_file_abe2a60b9d48d38a4c9ec85bd891aafca}{}\label{print__task_8py_file_abe2a60b9d48d38a4c9ec85bd891aafca}
+
+
+Run function for the task which prints stuff. 
+
+This function checks for any characters to be printed in the queue; if any characters are found then one character is printed, after which the print task yields so other tasks can run. This functino must be called periodically; the normal way is to make it the run function of a low priority task in a cooperatively multitasked system so that the task scheduler calls this function when the higher priority tasks don\textquotesingle{}t need to run. 
+
+\subsection{Variable Documentation}
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!B\+U\+F\+\_\+\+S\+I\+ZE@{B\+U\+F\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+\_\+\+S\+I\+ZE@{B\+U\+F\+\_\+\+S\+I\+ZE}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{B\+U\+F\+\_\+\+S\+I\+ZE}{BUF_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}print\+\_\+task.\+B\+U\+F\+\_\+\+S\+I\+ZE = const(100)}\hypertarget{print__task_8py_file_a88f04f8dbccfe4f94fc04afbc194a7b0}{}\label{print__task_8py_file_a88f04f8dbccfe4f94fc04afbc194a7b0}
+
+
+The size of the buffer which will hold characters to be printed when the print task has time to print them. 
+
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!print\+\_\+queue@{print\+\_\+queue}}
+\index{print\+\_\+queue@{print\+\_\+queue}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{print\+\_\+queue}{print_queue}}]{\setlength{\rightskip}{0pt plus 5cm}print\+\_\+task.\+print\+\_\+queue}\hypertarget{print__task_8py_file_a81414bedb3face3c011fdde4579a04f7}{}\label{print__task_8py_file_a81414bedb3face3c011fdde4579a04f7}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = \hyperlink{classtask__share_1_1Queue}{task\_share.Queue}(\textcolor{stringliteral}{'B'}, BUF\_SIZE, name = \textcolor{stringliteral}{"Print\_Queue"}, 
+2                         thread\_protect = THREAD\_PROTECT, overwrite = \textcolor{keyword}{False})
+\end{DoxyCode}
+
+
+This queue holds characters to be printed when the print task gets around to it. 
+
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!print\+\_\+task@{print\+\_\+task}}
+\index{print\+\_\+task@{print\+\_\+task}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{print\+\_\+task}{print_task}}]{\setlength{\rightskip}{0pt plus 5cm}print\+\_\+task.\+print\+\_\+task}\hypertarget{print__task_8py_file_aeb44d382e1d09e84db0909b53b9b1d13}{}\label{print__task_8py_file_aeb44d382e1d09e84db0909b53b9b1d13}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = \hyperlink{classcotask_1_1Task}{cotask.Task}(run, name = \textcolor{stringliteral}{'Printing'}, priority = 0, 
+2                           profile = PROFILE)
+\end{DoxyCode}
+
+
+This is the task which schedules printing. 
+
+\index{print\+\_\+task.\+py@{print\+\_\+task.\+py}!T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT@{T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT@{T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT}!print\+\_\+task.\+py@{print\+\_\+task.\+py}}
+\subsubsection[{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT}{THREAD_PROTECT}}]{\setlength{\rightskip}{0pt plus 5cm}bool print\+\_\+task.\+T\+H\+R\+E\+A\+D\+\_\+\+P\+R\+O\+T\+E\+CT = True}\hypertarget{print__task_8py_file_a11e4727a312bb3d5da524affe5fc462f}{}\label{print__task_8py_file_a11e4727a312bb3d5da524affe5fc462f}
+
+
+A flag which is passed to the queue constructor to control whether the queue will protect puts and gets from being corrupted by interrupts. 
+

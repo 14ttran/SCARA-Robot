@@ -1,0 +1,182 @@
+\hypertarget{classpcontroller_1_1Pcontroller}{}\section{pcontroller.\+Pcontroller Class Reference}
+\label{classpcontroller_1_1Pcontroller}\index{pcontroller.\+Pcontroller@{pcontroller.\+Pcontroller}}
+
+
+This class implements a proportional controller for the motor.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classpcontroller_1_1Pcontroller_af4560987e4c627b66086adc25d163131}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classpcontroller_1_1Pcontroller_ad3d59362de420027d1992bb5d32d2e15}{motor\+\_\+voltage}, \hyperlink{classpcontroller_1_1Pcontroller_aec6beda8c32175f3537e50cd1b30d6e9}{kp}=0.\+0, \hyperlink{classpcontroller_1_1Pcontroller_aa22988c44417c1a85f34f569499d95b8}{ki}=0.\+0, psat=0, nsat=0, \hyperlink{classpcontroller_1_1Pcontroller_abf2da52e74277024c07eb12d2d9d8c47}{setpoint}=0)
+\begin{DoxyCompactList}\small\item\em Initializes the motor controller with the appropriate gain, motor voltage, and setpoint. \end{DoxyCompactList}\item 
+def \hyperlink{classpcontroller_1_1Pcontroller_a529ae3c0b7e93ff7226c3a87203bad9c}{control} (self, \hyperlink{classpcontroller_1_1Pcontroller_adc23f159a284c2e35a9ff09025de0fd6}{actual}=0)
+\begin{DoxyCompactList}\small\item\em This method computes the control loop. \end{DoxyCompactList}\item 
+def \hyperlink{classpcontroller_1_1Pcontroller_ab0b68328ae83575b041ac7e9b38634bf}{setsetpoint} (self, \hyperlink{classpcontroller_1_1Pcontroller_abf2da52e74277024c07eb12d2d9d8c47}{setpoint})
+\begin{DoxyCompactList}\small\item\em This method sets the reference value so the class need not be called again. \end{DoxyCompactList}\item 
+def \hyperlink{classpcontroller_1_1Pcontroller_a1336761292100d394eed2f825eb782e7}{setgain} (self, \hyperlink{classpcontroller_1_1Pcontroller_aec6beda8c32175f3537e50cd1b30d6e9}{kp}, \hyperlink{classpcontroller_1_1Pcontroller_aa22988c44417c1a85f34f569499d95b8}{ki}, psat, nsat)
+\begin{DoxyCompactList}\small\item\em This method sets the proportional gain so the class need not be called again. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpcontroller_1_1Pcontroller_abf2da52e74277024c07eb12d2d9d8c47}{setpoint}\hypertarget{classpcontroller_1_1Pcontroller_abf2da52e74277024c07eb12d2d9d8c47}{}\label{classpcontroller_1_1Pcontroller_abf2da52e74277024c07eb12d2d9d8c47}
+
+\begin{DoxyCompactList}\small\item\em reference location \mbox{[}rad -\/$>$ ticks\mbox{]} \end{DoxyCompactList}\item 
+\hyperlink{classpcontroller_1_1Pcontroller_aec6beda8c32175f3537e50cd1b30d6e9}{kp}\hypertarget{classpcontroller_1_1Pcontroller_aec6beda8c32175f3537e50cd1b30d6e9}{}\label{classpcontroller_1_1Pcontroller_aec6beda8c32175f3537e50cd1b30d6e9}
+
+\begin{DoxyCompactList}\small\item\em proportional gain \end{DoxyCompactList}\item 
+\hyperlink{classpcontroller_1_1Pcontroller_aa22988c44417c1a85f34f569499d95b8}{ki}\hypertarget{classpcontroller_1_1Pcontroller_aa22988c44417c1a85f34f569499d95b8}{}\label{classpcontroller_1_1Pcontroller_aa22988c44417c1a85f34f569499d95b8}
+
+\begin{DoxyCompactList}\small\item\em integral gain \end{DoxyCompactList}\item 
+\hyperlink{classpcontroller_1_1Pcontroller_ad3d59362de420027d1992bb5d32d2e15}{motor\+\_\+voltage}\hypertarget{classpcontroller_1_1Pcontroller_ad3d59362de420027d1992bb5d32d2e15}{}\label{classpcontroller_1_1Pcontroller_ad3d59362de420027d1992bb5d32d2e15}
+
+\begin{DoxyCompactList}\small\item\em peak motor voltage rating \end{DoxyCompactList}\item 
+{\bfseries ierror}\hypertarget{classpcontroller_1_1Pcontroller_a903adf897bbdc8f3c3fecf9ae9e27214}{}\label{classpcontroller_1_1Pcontroller_a903adf897bbdc8f3c3fecf9ae9e27214}
+
+\item 
+{\bfseries psat}\hypertarget{classpcontroller_1_1Pcontroller_a68ca5d0666011e2ac2a1c709517fdfda}{}\label{classpcontroller_1_1Pcontroller_a68ca5d0666011e2ac2a1c709517fdfda}
+
+\item 
+{\bfseries nsat}\hypertarget{classpcontroller_1_1Pcontroller_a1cefb27c1ae73bc1acc54aee911aa9fb}{}\label{classpcontroller_1_1Pcontroller_a1cefb27c1ae73bc1acc54aee911aa9fb}
+
+\item 
+\hyperlink{classpcontroller_1_1Pcontroller_adc23f159a284c2e35a9ff09025de0fd6}{actual}\hypertarget{classpcontroller_1_1Pcontroller_adc23f159a284c2e35a9ff09025de0fd6}{}\label{classpcontroller_1_1Pcontroller_adc23f159a284c2e35a9ff09025de0fd6}
+
+\begin{DoxyCompactList}\small\item\em feedback value \mbox{[}ticks\mbox{]} \end{DoxyCompactList}\item 
+\hyperlink{classpcontroller_1_1Pcontroller_ad6ac6a957e6fb2d94734f46a444f15d9}{perror}\hypertarget{classpcontroller_1_1Pcontroller_ad6ac6a957e6fb2d94734f46a444f15d9}{}\label{classpcontroller_1_1Pcontroller_ad6ac6a957e6fb2d94734f46a444f15d9}
+
+\begin{DoxyCompactList}\small\item\em error calculation \mbox{[}ticks\mbox{]} \end{DoxyCompactList}\item 
+\hyperlink{classpcontroller_1_1Pcontroller_a394153e4387285a0dab405646a2ed12b}{actuation}\hypertarget{classpcontroller_1_1Pcontroller_a394153e4387285a0dab405646a2ed12b}{}\label{classpcontroller_1_1Pcontroller_a394153e4387285a0dab405646a2ed12b}
+
+\begin{DoxyCompactList}\small\item\em proportional control calculation \mbox{[}volts\mbox{]} \end{DoxyCompactList}\item 
+{\bfseries pwmsignal}\hypertarget{classpcontroller_1_1Pcontroller_a4974e5f4ebbca12bf50108fe0be46e93}{}\label{classpcontroller_1_1Pcontroller_a4974e5f4ebbca12bf50108fe0be46e93}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements a proportional controller for the motor. 
+
+It is intended to be called continuously in order to properly control the location of the motor
+
+Example of how to use each function individually\+: 
+\begin{DoxyCode}
+1 \textcolor{stringliteral}{''' Create an Pcontroller object '''}
+2 motorvoltage = 12 \textcolor{comment}{#Volts}
+3 controller = \hyperlink{classpcontroller_1_1Pcontroller}{pcontroller.Pcontroller}(motorvoltage)
+4 \textcolor{stringliteral}{''' Set the destination of the motor '''}
+5 destination = 1000
+6 controller.setsetpoint(destination)
+7 \textcolor{stringliteral}{''' Set the gain and saturation values of the controller '''}
+8 kp = 0.01
+9 ki = 0
+10 psat = 4000
+11 nsat = -4000
+12 controller.setgain(kp,ki,psat,nsat)
+13 \textcolor{stringliteral}{''' Calculate the pwm value to send to the motor '''}
+14 current\_location = 0
+15 pwm = controller.control(current\_location)
+\end{DoxyCode}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+(self, motor\+\_\+voltage, kp=0.\+0, ki=0.\+0, psat=0, nsat=0, setpoint=0)}{__init__(self, motor_voltage, kp=0.0, ki=0.0, psat=0, nsat=0, setpoint=0)}}]{\setlength{\rightskip}{0pt plus 5cm}def pcontroller.\+Pcontroller.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{motor\+\_\+voltage, }
+\item[{}]{kp = {\ttfamily 0.0}, }
+\item[{}]{ki = {\ttfamily 0.0}, }
+\item[{}]{psat = {\ttfamily 0}, }
+\item[{}]{nsat = {\ttfamily 0}, }
+\item[{}]{setpoint = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classpcontroller_1_1Pcontroller_af4560987e4c627b66086adc25d163131}{}\label{classpcontroller_1_1Pcontroller_af4560987e4c627b66086adc25d163131}
+
+
+Initializes the motor controller with the appropriate gain, motor voltage, and setpoint. 
+
+Contains code to implement integral control, but it is not recommended as the form of integral control implemented is not appropriate for stable position control. 
+\begin{DoxyParams}{Parameters}
+{\em motor\+\_\+voltage} & the voltage supplied to the motor \\
+\hline
+{\em kp} & the proportional gain \\
+\hline
+{\em ki} & the integral gain, recommend 0 \\
+\hline
+{\em psat} & maximum \textquotesingle{}positive\textquotesingle{} integral error \\
+\hline
+{\em nsat} & maximum \textquotesingle{}negative\textquotesingle{} integral error \\
+\hline
+{\em setpoint} & desired location to move the motor to \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}!control@{control}}
+\index{control@{control}!pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}}
+\subsubsection[{\texorpdfstring{control(self, actual=0)}{control(self, actual=0)}}]{\setlength{\rightskip}{0pt plus 5cm}def pcontroller.\+Pcontroller.\+control (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{actual = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classpcontroller_1_1Pcontroller_a529ae3c0b7e93ff7226c3a87203bad9c}{}\label{classpcontroller_1_1Pcontroller_a529ae3c0b7e93ff7226c3a87203bad9c}
+
+
+This method computes the control loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual} & The measured location for feedback. \\
+\hline
+\end{DoxyParams}
+\index{pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}!setgain@{setgain}}
+\index{setgain@{setgain}!pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}}
+\subsubsection[{\texorpdfstring{setgain(self, kp, ki, psat, nsat)}{setgain(self, kp, ki, psat, nsat)}}]{\setlength{\rightskip}{0pt plus 5cm}def pcontroller.\+Pcontroller.\+setgain (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{kp, }
+\item[{}]{ki, }
+\item[{}]{psat, }
+\item[{}]{nsat}
+\end{DoxyParamCaption}
+)}\hypertarget{classpcontroller_1_1Pcontroller_a1336761292100d394eed2f825eb782e7}{}\label{classpcontroller_1_1Pcontroller_a1336761292100d394eed2f825eb782e7}
+
+
+This method sets the proportional gain so the class need not be called again. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & the proportional gain \\
+\hline
+{\em ki} & the integral gain, recommend 0 \\
+\hline
+{\em psat} & maximum \textquotesingle{}positive\textquotesingle{} pwm signal allowed \\
+\hline
+{\em nsat} & maximum \textquotesingle{}negative\textquotesingle{} pwm signal allowed \\
+\hline
+\end{DoxyParams}
+\index{pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}!setsetpoint@{setsetpoint}}
+\index{setsetpoint@{setsetpoint}!pcontroller\+::\+Pcontroller@{pcontroller\+::\+Pcontroller}}
+\subsubsection[{\texorpdfstring{setsetpoint(self, setpoint)}{setsetpoint(self, setpoint)}}]{\setlength{\rightskip}{0pt plus 5cm}def pcontroller.\+Pcontroller.\+setsetpoint (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{setpoint}
+\end{DoxyParamCaption}
+)}\hypertarget{classpcontroller_1_1Pcontroller_ab0b68328ae83575b041ac7e9b38634bf}{}\label{classpcontroller_1_1Pcontroller_ab0b68328ae83575b041ac7e9b38634bf}
+
+
+This method sets the reference value so the class need not be called again. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & A reference location for the controller. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcontroller.\+py\end{DoxyCompactItemize}

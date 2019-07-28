@@ -1,0 +1,112 @@
+\hypertarget{classencoder_1_1Encoder}{}\section{encoder.\+Encoder Class Reference}
+\label{classencoder_1_1Encoder}\index{encoder.\+Encoder@{encoder.\+Encoder}}
+
+
+This class implements the encoder a DC motor to the ME 405 board.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classencoder_1_1Encoder_ae88fa84fa0eb74af82ddec03d27a1e07}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, positive\+\_\+pin, negative\+\_\+pin, timer)
+\begin{DoxyCompactList}\small\item\em Initializes the G\+P\+IO pins to read the encoder channels. \end{DoxyCompactList}\item 
+def \hyperlink{classencoder_1_1Encoder_aa1c1535160682500f5214f45d8197027}{read} (self)\hypertarget{classencoder_1_1Encoder_aa1c1535160682500f5214f45d8197027}{}\label{classencoder_1_1Encoder_aa1c1535160682500f5214f45d8197027}
+
+\begin{DoxyCompactList}\small\item\em Reads the encoder output and calculates the current position of the motor. \end{DoxyCompactList}\item 
+def \hyperlink{classencoder_1_1Encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}{zero} (self)
+\begin{DoxyCompactList}\small\item\em Resets the encoder position to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries pos\+\_\+pin}\hypertarget{classencoder_1_1Encoder_a85d8c23e128221e4adb2b647015dde1c}{}\label{classencoder_1_1Encoder_a85d8c23e128221e4adb2b647015dde1c}
+
+\item 
+{\bfseries neg\+\_\+pin}\hypertarget{classencoder_1_1Encoder_a3182a23f8c800d9ddbf49fcad7e1101c}{}\label{classencoder_1_1Encoder_a3182a23f8c800d9ddbf49fcad7e1101c}
+
+\item 
+{\bfseries timer}\hypertarget{classencoder_1_1Encoder_a8e9c3e1317abc4f6fbe95468c69223d1}{}\label{classencoder_1_1Encoder_a8e9c3e1317abc4f6fbe95468c69223d1}
+
+\item 
+{\bfseries ch1}\hypertarget{classencoder_1_1Encoder_a076f2be10f58f336dd7fb70b55feee6f}{}\label{classencoder_1_1Encoder_a076f2be10f58f336dd7fb70b55feee6f}
+
+\item 
+{\bfseries ch2}\hypertarget{classencoder_1_1Encoder_a1c05e07f7131cc3d173daf4d26b605b5}{}\label{classencoder_1_1Encoder_a1c05e07f7131cc3d173daf4d26b605b5}
+
+\item 
+{\bfseries A\+\_\+position}\hypertarget{classencoder_1_1Encoder_adc638ee028ad13723aa99f2c4959a1bd}{}\label{classencoder_1_1Encoder_adc638ee028ad13723aa99f2c4959a1bd}
+
+\item 
+{\bfseries A\+\_\+last}\hypertarget{classencoder_1_1Encoder_a886bf98fc5bee7cfce9d304f0dc51538}{}\label{classencoder_1_1Encoder_a886bf98fc5bee7cfce9d304f0dc51538}
+
+\item 
+{\bfseries A\+\_\+current}\hypertarget{classencoder_1_1Encoder_a81c77f9935eb474e0f4909c9002971f1}{}\label{classencoder_1_1Encoder_a81c77f9935eb474e0f4909c9002971f1}
+
+\item 
+{\bfseries A\+\_\+delta\+\_\+position}\hypertarget{classencoder_1_1Encoder_a51b27c3ca487f12cdba9ad8d3e586759}{}\label{classencoder_1_1Encoder_a51b27c3ca487f12cdba9ad8d3e586759}
+
+\item 
+{\bfseries A\+\_\+delta\+\_\+positionlast}\hypertarget{classencoder_1_1Encoder_a38373147368909dd19704c206604f723}{}\label{classencoder_1_1Encoder_a38373147368909dd19704c206604f723}
+
+\item 
+\hyperlink{classencoder_1_1Encoder_ae107239a0e27dc14a5c1c8dc5318e239}{radial}\hypertarget{classencoder_1_1Encoder_ae107239a0e27dc14a5c1c8dc5318e239}{}\label{classencoder_1_1Encoder_ae107239a0e27dc14a5c1c8dc5318e239}
+
+\begin{DoxyCompactList}\small\item\em radial position in float \mbox{[}rad\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements the encoder a DC motor to the ME 405 board. 
+
+Example\+: 
+\begin{DoxyCode}
+1 \textcolor{stringliteral}{''' Create an Encoder object '''}
+2 enc = \hyperlink{classencoder_1_1Encoder}{encoder.Encoder}(pyb.Pin.board.PB6, pyb.Pin.board.PB7,4)
+3 \textcolor{stringliteral}{''' Get the current location of the motor '''}
+4 location = enc.read()
+5 \textcolor{stringliteral}{''' Zero the encoder reading at the current location '''}
+6 enc.zero()
+\end{DoxyCode}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{encoder\+::\+Encoder@{encoder\+::\+Encoder}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!encoder\+::\+Encoder@{encoder\+::\+Encoder}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+(self, positive\+\_\+pin, negative\+\_\+pin, timer)}{__init__(self, positive_pin, negative_pin, timer)}}]{\setlength{\rightskip}{0pt plus 5cm}def encoder.\+Encoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{positive\+\_\+pin, }
+\item[{}]{negative\+\_\+pin, }
+\item[{}]{timer}
+\end{DoxyParamCaption}
+)}\hypertarget{classencoder_1_1Encoder_ae88fa84fa0eb74af82ddec03d27a1e07}{}\label{classencoder_1_1Encoder_ae88fa84fa0eb74af82ddec03d27a1e07}
+
+
+Initializes the G\+P\+IO pins to read the encoder channels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em positive\+\_\+pin} & this pin reads the \textquotesingle{}positive\textquotesingle{} side of the encoder \\
+\hline
+{\em negative\+\_\+pin} & this pin reads the \textquotesingle{}negative\textquotesingle{} side of the encoder \\
+\hline
+{\em timer} & increments or decrements according to the changes in the positive and negative pins \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{encoder\+::\+Encoder@{encoder\+::\+Encoder}!zero@{zero}}
+\index{zero@{zero}!encoder\+::\+Encoder@{encoder\+::\+Encoder}}
+\subsubsection[{\texorpdfstring{zero(self)}{zero(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def encoder.\+Encoder.\+zero (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classencoder_1_1Encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}{}\label{classencoder_1_1Encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}
+
+
+Resets the encoder position to zero. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+encoder.\+py\end{DoxyCompactItemize}
