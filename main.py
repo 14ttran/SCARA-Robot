@@ -2,7 +2,7 @@
 #
 ## @privatesection - Stuff in this file doesn't need to be Doxygen-ed
 #
-#  @author jr
+# @authot: Tomy Tran, Kevin Tran, Ahmed Shorab
 
 import pyb
 import micropython
